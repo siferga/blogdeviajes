@@ -80,4 +80,10 @@ class Comment
 
         return $this;
     }
+
+    //convert into string
+    public function __toString()
+    {
+        return $this->content;
+    }
 }

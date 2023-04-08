@@ -134,4 +134,10 @@ class Article
 
         return $this;
     }
+
+    //convert into string
+    public function __toString()
+    {
+        return $this->title;
+    }
 }
