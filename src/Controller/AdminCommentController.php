@@ -34,7 +34,7 @@ class AdminCommentController extends AbstractController
             return $this->redirectToRoute('app_admin_comment_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_comment/new.html.twig', [
+        return $this->render('admin_comment/new.html.twig', [
             'comment' => $comment,
             'form' => $form,
         ]);
@@ -60,7 +60,7 @@ class AdminCommentController extends AbstractController
             return $this->redirectToRoute('app_admin_comment_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_comment/edit.html.twig', [
+        return $this->render('admin_comment/edit.html.twig', [
             'comment' => $comment,
             'form' => $form,
         ]);
@@ -69,7 +69,7 @@ class AdminCommentController extends AbstractController
     #[Route('/{id}', name: 'app_admin_comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, CommentRepository $commentRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
             $commentRepository->remove($comment, true);
         }
 
