@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Form\Comment1Type;
 use App\Repository\CommentRepository;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,8 @@ class CommentController extends AbstractController
     public function new(Request $request, CommentRepository $commentRepository): Response
     {
         $comment = new Comment();
+        $comment->setCreatedAt(new DateTimeImmutable());
+        $comment->setUser($this->getUser());
         $form = $this->createForm(Comment1Type::class, $comment);
         $form->handleRequest($request);
 
