@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Category</h1>
+	<h1>Categorías</h1>
 
 	<table class="table">
 		<tbody>
@@ -13,12 +13,48 @@
 				<td>{{ category.id }}</td>
 			</tr>
 			<tr>
-				<th>Name</th>
+				<th>Categoría</th>
 				<td>{{ category.name }}</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<a href="{{ path('app_category_index') }}">back to list</a>
+	<div>
+		{% for article in articles %}
+			<div>Artículo :
+				{{ article.title }}</div>
+
+		{% endfor %}
+	</div>
+
+	<a href="{{ path('app_category_index') }}">Vuelta a la lista</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Title</th>
+				<th>Content</th>
+				<th>CreatedAt</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for article in articles %}
+				<tr>
+					<td>{{ article.id }}</td>
+					<td>{{ article.title }}</td>
+					<td>{{ article.content }}</td>
+					<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
 {% endblock %}
