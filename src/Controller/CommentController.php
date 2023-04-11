@@ -27,8 +27,9 @@ class CommentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $commentRepository->save($comment, true);
+            //Redirection to the article's details
 
-            return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_article_show', ['id' => $article->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('comment/new.html.twig', [
