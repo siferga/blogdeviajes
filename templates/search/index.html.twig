@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!
+{% endblock %}
+
+{% block body %}
+
+	<div>
+		<form>
+			<input type="search" name="search" placeholder="Búsqueda"/>
+			<button type="submit">Rechercher</button>
+		</form>
+	</div>
+	<table>
+		{% for article in articles %}
+			<tr>
+				<td>{{ article.id }}</td>
+				<td>{{ article.title }}</td>
+				<td>{{ article.content }}</td>
+				<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+				<td>
+					<a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="5">No hay artículos</td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
