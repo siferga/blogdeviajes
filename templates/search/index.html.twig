@@ -4,28 +4,18 @@
 {% endblock %}
 
 {% block body %}
-
-	<div>
-		<form>
-			<input type="search" name="search" placeholder="Búsqueda"/>
-			<button type="submit">Rechercher</button>
-		</form>
-	</div>
+	<h1>Resultado de la búsqueda</h1>
+	<h2 class="my-3">Artículos encontrados</h2>
 	<table>
 		{% for article in articles %}
-			<tr>
-				<td>{{ article.id }}</td>
-				<td>{{ article.title }}</td>
-				<td>{{ article.content }}</td>
-				<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-				<td>
-					<a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
-				</td>
-			</tr>
+			<div>
+				<h3>{{ article.title }}</h3>
+				<div>
+					<a href="{{ path('app_article_show', {'id': article.id}) }}">ver artículo</a>
+				</div>
+			</div>
 		{% else %}
-			<tr>
-				<td colspan="5">No hay artículos</td>
-			</tr>
+			<div>No se ha encontrado ningún artículo</div>
 		{% endfor %}
 	</table>
 {% endblock %}
