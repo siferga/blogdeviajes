@@ -4,49 +4,23 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Categorías</h1>
+	<h1>{{ category.name }}</h1>
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ category.id }}</td>
-			</tr>
-			<tr>
-				<th>Categoría</th>
-				<td>{{ category.name }}</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<div>
-		{% for article in articles %}
-			<div>Artículo :
-				{{ article.title }}</div>
-
-		{% endfor %}
-	</div>
-
-	<a href="{{ path('app_category_index') }}">Vuelta a la lista</a>
+	<a href="{{ path('app_category_index') }}">Volver a la lista de Categorías</a>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Id</th>
-				<th>Title</th>
-				<th>Content</th>
-				<th>CreatedAt</th>
-				<th>actions</th>
+				<th>Título</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for article in articles %}
 				<tr>
-					<td>{{ article.id }}</td>
 					<td>{{ article.title }}</td>
-					<td>{{ article.content }}</td>
-					<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+
 					<td>
-						<a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+						<a href="{{ path('app_article_show', {'id': article.id}) }}">Consultar
+						</a>
 					</td>
 				</tr>
 			{% else %}

@@ -13,7 +13,7 @@
 				<th>Title</th>
 				<th>Content</th>
 				<th>CreatedAt</th>
-				<th>actions</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,7 +24,7 @@
 					<td>{{ article.content }}</td>
 					<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 					<td>
-						<a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+						<a href="{{ path('app_article_show', {'id': article.id}) }}">Consultar</a>
 					</td>
 				</tr>
 			{% else %}
